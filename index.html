@@ -55,6 +55,28 @@
             <div class="spinner"></div>
         </div>
     </div>
+    <script>
+
+//ton connect to the js ui-->
+const tonConnectUI = new Ton_CONNECT_UI_TonConnectUI({
+//Define the menifast
+manifestUrl: "https://moungchenrk.github.io/Poloniex-Coin/tonconnect-manifest.json",
+buttonRootId: "ton-connect"
+
+}
+);
+async function connectToWallet() {
+        const connectedWallet = await tonConnectUI.connectWallet();
+        // Do something with connectedWallet if needed
+        console.log(connectedWallet);
+    }
+
+    // Call the function
+    connectToWallet().catch(error => {
+        console.error("Error connecting to wallet:", error);
+    });
+
+    </script>
 
     <script>
        
