@@ -22,38 +22,7 @@ window.addEventListener('click', (event) => {
     }
 });
 
-connectWalletBtn.addEventListener('click', () => {
-    statusMessage.textContent = 'Connecting to your TON wallet...';
 
-
-        const tonConnectUI = new Ton_CONNECT_UI_TonConnectUI({
-            //Define the menifast
-            manifestUrl: "https://moungchenrk.github.io/Poloniex-Coin/tonconnect-manifest.json",
-            buttonRootId: "ton-connect"
-            
-            }
-            );
-            async function connectToWallet() {
-                    const connectedWallet = await tonConnectUI.connectWallet();
-                    // Do something with connectedWallet if needed
-                    console.log(connectedWallet);
-                }
-            
-                // Call the function
-                connectToWallet().catch(error => {
-                    console.error("Error connecting to wallet:", error);
-                });
-            
-
-
-
-
-
-
-    setTimeout(() => {
-        statusMessage.textContent = 'oops try again something wents wrong!';
-    }, 2000);
-});
 
 
 cancelWalletBtn.addEventListener('click', () => {
