@@ -114,82 +114,66 @@
 
     <div id="balance-container"><h2><b></b></h2>
         <span id="balance">0</span>🦴 total dogs
-
-        <h2> Daily Tasks </h2>
     </div>
     <br>
 
-    <div class="task-container">
-        <div class="task">
-            <div class="task-detail">
-                <div class="task-image">
-                    <img src="material/images/logo.png" width="45px" alt="">
-                
+<!------------hhhhhhhhhhhhhhhhhhhhhhhhhhh-->
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        .balance {
+            font-size: 24px;
+            margin: 20px;
+        }
+        .coin-btn {
+            width: 150px;
+            height: 150px;
+            background: url('https://images.rawpixel.com/image_png_social_square/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI0LTAxL3Jhd3BpeGVsb2ZmaWNlNl9idWRkaGFzX2JpcnRoZGF5X2xvdHVzX3Bvc2l0aW9uX3ByYXlpbmdfYnVkZGhhX19lZWM5OTY1Mi1jYjE3LTRhYTgtOTQ2Mi00ZjFkMjRjZTRlNWNfMS5wbmc.png') no-repeat center/cover;
+            border-radius: 50%;
+            display: inline-block;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+  
+  
+    <div class="coin-btn" onclick="addCoins()"></div>
 
-                </div>
-                <div>
-                    
-                    <h4>claim rewards</h4>
-                    <div class="task-data">
-                        <img src="material/images/logo.png" width="20px" alt="Coin Icon">
-                        <h5>300</h5>
-                    </div>
-                </div>
-            </div>
-            <button class="task-button" onclick="completeTask(300, 'reword.html')">🦴 claim</button>
-        </div>
+    <script>
+        let balance = localStorage.getItem("coinBalance") ? parseInt(localStorage.getItem("coinBalance")) : 0;
+        document.getElementById("balance").textContent = balance;
 
-        <div class="task">
-            <div class="task-detail">
-                <div class="task-image">
-                    <img src="material/images/logo.png" width="45px" alt="">
-                </div>
-                <div>
-                    <h4>verify and earn</h4>
-                    <div class="task-data">
-                        <img src="material/images/logo.png" width="20px" alt="Coin Icon">
-                        <h5>200</h5>
-                    </div>
-                </div>
-            </div>
-            <button class="task-button" onclick="completeTask(200, 'verify.html')">🦴 claim</button>
-        </div>
-
-    <div class="task">
-            <div class="task-detail">
-                <div class="task-image">
-                    <img src="material/images/logo.png" width="45px" alt="">
-                </div>
-                <div>
-                    <h4>verify and earn11111</h4>
-                    <div class="task-data">
-                        <img src="material/images/logo.png" width="20px" alt="Coin Icon">
-                        <h5>200</h5>
-                    </div>
-                </div>
-            </div>
-            <button class="task-button" onclick="completeTask(200, 'verify.html')">🦴 claim</button>
-        </div>
-        
+        function addCoins() {
+            balance += 5;
+            document.getElementById("balance").textContent = balance;
+            localStorage.setItem("coinBalance", balance);
+        }
+    </script>
+</body>
+</html>
 
 
-        <div class="task">
-            <div class="task-detail">
-                <div class="task-image">
-                    <img src="material/images/logo.png" width="45px" alt="">
-                </div>
-                <div>
-                    <h4>verify andpll  earn</h4>
-                    <div class="task-data">
-                        <img src="material/images/logo.png" width="20px" alt="Coin Icon">
-                        <h5>200</h5>
-                    </div>
-                </div>
-            </div>
-            <button class="task-button" onclick="completeTask(200, 'verify.html')">🦴 claim</button>
-        </div>
 
 
+
+
+
+
+
+
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let savedBalance = localStorage.getItem("coinBalance") || 0;
+            document.getElementById("home-balance").innerText = savedBalance;
+        });
+    </script>
+    
 
 
 
