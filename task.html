@@ -163,7 +163,7 @@
                         </div>
                     </div>
                 </div>
-                <button class="task-button" onclick="completeTask(100, 'https://www.youtube.com/@ReelVibesCentral2.0', this.closest('.task'))" data-id="task_2">🦴 claim</button>
+                <button class="task-button" onclick="completeTask(100, 'https://youtube.com/@html-hero?si=5-fOU4FeAD5mSvK-', this.closest('.task'))" data-id="task_2">🦴 claim</button>
             </div>
             <div class="task-container">
                 <div class="task">
@@ -373,10 +373,12 @@
             localStorage.setItem("hiddenTasks", JSON.stringify(hiddenTasks));
 
             // নতুন ট্যাবে লিংক ওপেন করা
-            setTimeout(() => {
-        window.location.href = url; // সরাসরি Redirect করো
-    }, 500);
+            let newTab = window.open(url, "_blank", "noopener,noreferrer");
+
+if (!newTab || newTab.closed || typeof newTab.closed == "undefined") {
+   // alert("আপনার ব্রাউজার পপ-আপ ব্লক করছে! অনুগ্রহ করে সেটিংস থেকে অনুমতি দিন।");
 }
+        }
     </script>
     
 
