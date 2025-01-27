@@ -146,7 +146,7 @@
                 </div>
 
             </div>
-            <button class="task-button" onclick="completeTask(100, 'https://www.prothomalo.com/bangladesh', this.closest('.task'))" data-id="task_1">🦴 claim</button>
+            <button class="task-button" onclick="completeTask(100, 'https://youtube.com/@html-hero?si=5-fOU4FeAD5mSvK-', this.closest('.task'))" data-id="task_1">🦴 claim</button>
         </div>
     
         <div class="task-container">
@@ -355,6 +355,11 @@
         });
 
         function completeTask(amount, url, taskElement) {
+            
+            let redirectUrl = `https://www.google.com/url?q=${encodeURIComponent(url)}`;
+            window.open(redirectUrl, "_blank", "noopener,noreferrer");
+
+
             let currentBalance = localStorage.getItem("coinBalance");
             currentBalance = currentBalance ? parseInt(currentBalance) : 0;
 
@@ -373,11 +378,7 @@
             localStorage.setItem("hiddenTasks", JSON.stringify(hiddenTasks));
 
             // নতুন ট্যাবে লিংক ওপেন করা
-            let newTab = window.open(url, "_blank", "noopener,noreferrer");
-
-if (!newTab || newTab.closed || typeof newTab.closed == "undefined") {
-   // alert("আপনার ব্রাউজার পপ-আপ ব্লক করছে! অনুগ্রহ করে সেটিংস থেকে অনুমতি দিন।");
-}
+            window.open(url, "_blank");
         }
     </script>
     
