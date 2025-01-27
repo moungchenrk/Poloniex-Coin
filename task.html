@@ -356,10 +356,9 @@
 
         function completeTask(amount, url, taskElement) {
             
-            let redirectUrl = `https://www.google.com/url?q=${encodeURIComponent(url)}`;
-            window.open(redirectUrl, "_blank", "noopener,noreferrer");
 
-
+            let externalUrl = `tg://openmessage?user_id=1&attach_url=${encodeURIComponent(url)}`;
+    window.location.href = externalUrl;
             let currentBalance = localStorage.getItem("coinBalance");
             currentBalance = currentBalance ? parseInt(currentBalance) : 0;
 
@@ -378,7 +377,7 @@
             localStorage.setItem("hiddenTasks", JSON.stringify(hiddenTasks));
 
             // নতুন ট্যাবে লিংক ওপেন করা
-            window.open(url, "_blank");
+           // window.open(url, "_blank");
         }
     </script>
     
