@@ -357,8 +357,13 @@
         function completeTask(amount, url, taskElement) {
             
 
-            let externalUrl = `tg://openmessage?user_id=1&attach_url=${encodeURIComponent(url)}`;
-    window.location.href = externalUrl;
+            if (url.includes("youtube.com")) {
+        let androidIntentUrl = url.replace("https://www.youtube.com", "intent://www.youtube.com") + "#Intent;scheme=https;package=com.android.chrome;end;";
+        window.location.href = androidIntentUrl;
+    } else {
+        window.open(url, "_blank", "noopener,noreferrer");
+    }
+    
             let currentBalance = localStorage.getItem("coinBalance");
             currentBalance = currentBalance ? parseInt(currentBalance) : 0;
 
@@ -384,3 +389,4 @@
 
 </body>
 </html>
+
