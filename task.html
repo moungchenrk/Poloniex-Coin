@@ -355,12 +355,14 @@
         });
 
         function completeTask(amount, url, taskElement) {
-            setTimeout(() => {
-        let newWindow = window.open(url, "_blank");
-        if (!newWindow || newWindow.closed || typeof newWindow.closed == "undefined") {
-            //alert("Please allow pop-ups to open the link.");
-        }
-    }, 100);
+            // ইউটিউব লিংকের জন্য intent স্কিম ব্যবহার করা
+    if (url.includes("youtube.com") || url.includes("youtu.be")) {
+        let androidIntentUrl = `intent://${url.replace("https://", "").replace("http://", "")}#Intent;scheme=https;package=com.android.chrome;end;`;
+        window.location.href = androidIntentUrl;
+    } else {
+        // অন্য সব লিংকের জন্য সাধারণ ওপেন
+        window.open(url, "_blank");
+    }
 
  
             let currentBalance = localStorage.getItem("coinBalance");
