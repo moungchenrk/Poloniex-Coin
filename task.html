@@ -179,7 +179,7 @@
                             </div>
                         </div>
                     </div>
-                    <button class="task-button" onclick="completeTask(100, 'https://tinyurl.com/mr2f84kv', this.closest('.task'))" data-id="task_3">🦴 claim</button>
+                    <button class="task-button" onclick="completeTask(100, 'www.youtube.com/@ReelVibesCentral2.0', this.closest('.task'))" data-id="task_3">🦴 claim</button>
                 </div>
                 <div class="task-container">
                     <div class="task">
@@ -355,14 +355,16 @@
         });
 
         function completeTask(amount, url, taskElement) {
-            if (url.includes("youtube.com")) {
-        let fixedUrl = url.replace("www.youtube.com", "youtu.be").replace("https://", "").replace("http://", "");
-        let androidIntentUrl = `intent://${fixedUrl}#Intent;scheme=https;package=com.android.chrome;end;`;
-        window.location.href = androidIntentUrl;
-    } else {
-        window.open(url, "_blank", "noopener,noreferrer");
-    }
-
+            
+            if (url.includes("youtube.com") || url.includes("youtu.be")) {
+        let videoId = url.split("v=")[1]?.split("&")[0] || url.split("youtu.be/")[1]?.split("?")[0];
+        if (videoId) {
+            let youtubeAppUrl = `vnd.youtube://${videoId}`;
+            window.location.href = youtubeAppUrl;
+        } else {
+            window.open(url, "_blank", "noopener,noreferrer");
+        }
+    } 
  
             let currentBalance = localStorage.getItem("coinBalance");
             currentBalance = currentBalance ? parseInt(currentBalance) : 0;
@@ -382,7 +384,7 @@
             localStorage.setItem("hiddenTasks", JSON.stringify(hiddenTasks));
 
             // নতুন ট্যাবে লিংক ওপেন করা
-            window.open(url, "_blank");
+            //window.open(url, "_blank");
         }
     </script>
     
