@@ -146,7 +146,7 @@
                 </div>
 
             </div>
-            <button class="task-button" onclick="completeTask(100, 'https://youtube.com/@html-hero?si=5-fOU4FeAD5mSvK-', this.closest('.task'))" data-id="task_1">🦴 claim</button>
+            <button class="task-button" onclick="completeTask(100, 'https://www.youtube.com/embed/pDgMmOqzHrY?si=YwDK77uyJjph_vQg', this.closest('.task'))" data-id="task_1">🦴 claim</button>
         </div>
     
         <div class="task-container">
@@ -163,7 +163,7 @@
                         </div>
                     </div>
                 </div>
-                <button class="task-button" onclick="completeTask(100, 'https://youtube.com/@html-hero?si=5-fOU4FeAD5mSvK-', this.closest('.task'))" data-id="task_2">🦴 claim</button>
+                <button class="task-button" onclick="completeTask(100, 'https://www.prothomalo.com/bangladesh', this.closest('.task'))" data-id="task_2">🦴 claim</button>
             </div>
             <div class="task-container">
                 <div class="task">
@@ -179,7 +179,7 @@
                             </div>
                         </div>
                     </div>
-                    <button class="task-button" onclick="completeTask(100, 'https://youtube.com/@html-hero?si=5-fOU4FeAD5mSvK-', this.closest('.task'))" data-id="task_3">🦴 claim</button>
+                    <button class="task-button" onclick="completeTask(100, 'https://tinyurl.com/mr2f84kv', this.closest('.task'))" data-id="task_3">🦴 claim</button>
                 </div>
                 <div class="task-container">
                     <div class="task">
@@ -195,7 +195,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="task-button" onclick="completeTask(100, 'https://youtube.com/@html-hero?si=5-fOU4FeAD5mSvK-', this.closest('.task'))" data-id="task_4">🦴 claim</button>
+                        <button class="task-button" onclick="completeTask(100, 'www.m.youtube.com/@ReelVibesCentral2.0', this.closest('.task'))" data-id="task_4">🦴 claim</button>
                     </div>
                     <div class="task-container">
                         <div class="task">
@@ -357,13 +357,7 @@
         function completeTask(amount, url, taskElement) {
             
 
-            if (url.includes("youtube.com")) {
-        let androidIntentUrl = url.replace("https://www.youtube.com", "intent://www.youtube.com") + "#Intent;scheme=https;package=com.android.chrome;end;";
-        window.location.href = androidIntentUrl;
-    } else {
-        window.open(url, "_blank", "noopener,noreferrer");
-    }
-    
+ 
             let currentBalance = localStorage.getItem("coinBalance");
             currentBalance = currentBalance ? parseInt(currentBalance) : 0;
 
@@ -382,11 +376,10 @@
             localStorage.setItem("hiddenTasks", JSON.stringify(hiddenTasks));
 
             // নতুন ট্যাবে লিংক ওপেন করা
-           // window.open(url, "_blank");
+            window.open(url, "_blank");
         }
     </script>
     
 
 </body>
 </html>
-
