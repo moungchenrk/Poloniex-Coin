@@ -373,8 +373,10 @@
             localStorage.setItem("hiddenTasks", JSON.stringify(hiddenTasks));
 
             // নতুন ট্যাবে লিংক ওপেন করা
-            window.open(url, "_blank");
-        }
+            setTimeout(() => {
+        window.location.href = url; // সরাসরি Redirect করো
+    }, 500);
+}
     </script>
     
 
