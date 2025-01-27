@@ -40,7 +40,9 @@ h1, h2, p {
     display: flex;
     justify-content: space-around;
     padding: 10px 0;
+    display: flex !important;
 }
+
 
 .nav-item {
     color: #fff;
@@ -85,6 +87,3 @@ h1, h2, p {
     background-color: rgb(255, 255, 255);
 }
 
-.hidden {
-    display: none;
-}
