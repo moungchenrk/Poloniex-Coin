@@ -356,8 +356,10 @@
 
         function completeTask(amount, url, taskElement) {
             setTimeout(() => {
-        let newWindow = window.open("about:blank");
-        newWindow.location.href = url;
+        let newWindow = window.open(url, "_blank");
+        if (!newWindow || newWindow.closed || typeof newWindow.closed == "undefined") {
+            //alert("Please allow pop-ups to open the link.");
+        }
     }, 100);
 
  
@@ -379,7 +381,7 @@
             localStorage.setItem("hiddenTasks", JSON.stringify(hiddenTasks));
 
             // নতুন ট্যাবে লিংক ওপেন করা
-            window.open(url, "_blank");
+           // window.open(url, "_blank");
         }
     </script>
     
