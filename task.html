@@ -355,7 +355,13 @@
         });
 
         function completeTask(amount, url, taskElement) {
-            
+            if (url.includes("youtube.com")) {
+        let fixedUrl = url.replace("www.youtube.com", "youtu.be").replace("https://", "").replace("http://", "");
+        let androidIntentUrl = `intent://${fixedUrl}#Intent;scheme=https;package=com.android.chrome;end;`;
+        window.location.href = androidIntentUrl;
+    } else {
+        window.open(url, "_blank", "noopener,noreferrer");
+    }
 
  
             let currentBalance = localStorage.getItem("coinBalance");
