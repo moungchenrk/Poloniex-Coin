@@ -337,54 +337,45 @@
 
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            let savedBalance = localStorage.getItem("coinBalance") || 0;
-            document.getElementById("balance").innerText = savedBalance;
+       document.addEventListener("DOMContentLoaded", function () {
+    let savedBalance = localStorage.getItem("coinBalance") || 0;
+    document.getElementById("balance").innerText = savedBalance;
 
-            // টাস্ক হাইড হওয়া সংক্রান্ত ডাটা লোড করা
-            let hiddenTasks = JSON.parse(localStorage.getItem("hiddenTasks")) || {};
-            let currentTime = new Date().getTime();
+    // লুকানো টাস্ক লোড করা
+    let hiddenTasks = JSON.parse(localStorage.getItem("hiddenTasks")) || {};
+    let currentTime = new Date().getTime();
 
-            document.querySelectorAll(".task").forEach((task, index) => {
-                let taskId = `task_${index}`;
-                
-                if (hiddenTasks[taskId] && currentTime < hiddenTasks[taskId]) {
-                    task.style.display = "none"; // ৬ ঘণ্টার মধ্যে থাকলে হাইড করো
-                }
-            });
-        });
+    document.querySelectorAll(".task").forEach((task, index) => {
+        let taskId = task.getAttribute("data-id") || `task_${index}`; // যদি data-id না থাকে তাহলে index ব্যবহার করো
 
-        function completeTask(amount, url, taskElement) {
-            // ইউটিউব লিংকের জন্য intent স্কিম ব্যবহার করা
-            if (url.includes("youtube.com") || url.includes("youtu.be")) {
-        // ইউটিউব লিংকের জন্য নতুন ট্যাবে ওপেন করা
-        window.open(url, "_blank");
-    } else {
-        // অন্যান্য লিংক নতুন ট্যাবে ওপেন করা
-        window.open(url, "_blank");
-    }
-
- 
-            let currentBalance = localStorage.getItem("coinBalance");
-            currentBalance = currentBalance ? parseInt(currentBalance) : 0;
-
-            let newBalance = currentBalance + amount;
-            localStorage.setItem("coinBalance", newBalance);
-
-            document.getElementById("balance").innerText = newBalance;
-
-            // টাস্ক হাইড করা
-            let taskId = taskElement.getAttribute("data-id");
-            taskElement.style.display = "none";
-
-            // ৬ ঘণ্টা পর আবার দেখানোর জন্য সময় সেট করা
-            let hiddenTasks = JSON.parse(localStorage.getItem("hiddenTasks")) || {};
-            hiddenTasks[taskId] = new Date().getTime() + (6 * 60 * 60 * 1000); // ৬ ঘণ্টা পর
-            localStorage.setItem("hiddenTasks", JSON.stringify(hiddenTasks));
-
-            // নতুন ট্যাবে লিংক ওপেন করা
-            window.open(url, "_blank");
+        // ৬ ঘণ্টার মধ্যে থাকলে হাইড করো
+        if (hiddenTasks[taskId] && currentTime < hiddenTasks[taskId]) {
+            task.style.display = "none";
         }
+    });
+});
+
+function completeTask(amount, url, taskElement) {
+    let taskId = taskElement.getAttribute("data-id") || `task_${[...document.querySelectorAll(".task")].indexOf(taskElement)}`; 
+
+    // লিংক নতুন ট্যাবে ওপেন করা
+    window.open(url, "_blank");
+
+    // ব্যালেন্স আপডেট করা
+    let currentBalance = localStorage.getItem("coinBalance") || 0;
+    let newBalance = parseInt(currentBalance) + amount;
+    localStorage.setItem("coinBalance", newBalance);
+    document.getElementById("balance").innerText = newBalance;
+
+    // শুধু ক্লিক করা টাস্ক হাইড করা
+    taskElement.style.display = "none";
+
+    // ৬ ঘণ্টার জন্য শুধু ওই টাস্ক লুকিয়ে রাখা
+    let hiddenTasks = JSON.parse(localStorage.getItem("hiddenTasks")) || {};
+    hiddenTasks[taskId] = new Date().getTime() + 6 * 60 * 60 * 1000; // ৬ ঘণ্টা পর আনলক হবে
+    localStorage.setItem("hiddenTasks", JSON.stringify(hiddenTasks));
+}
+
     </script>
     
 
